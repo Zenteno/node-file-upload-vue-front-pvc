@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-front-deployment
+  labels:
+    app: vue-front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-front-node
+  template:
+    metadata:
+      labels:
+        app: vue-front-node
+    spec:
+      containers:
+      - name: nginx
+        image: us.gcr.io/proyecto-kubernetes-297222/vue-front
+        ports:
+        - containerPort: 8080
